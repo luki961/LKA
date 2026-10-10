@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Market</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #111827;
+      color: white;
+      padding: 20px;
+    }
+    canvas {
+      width: 100%;
+      max-width: 600px;
+      border: 1px solid #64748b;
+      background: white;
+      image-rendering: pixelated;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pixel Market</h1>
+  <p>Jual beli pixel — Rp1.500 per pixel</p>
+  <canvas id="pixelCanvas" width="1000" height="1000"></canvas>
+  <script>
+    const canvas = document.getElementById("pixelCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, 1000, 1000);
+    ctx.strokeStyle = "#eeeeee";
+    for (let i = 0; i <= 1000; i += 10) {
+      ctx.beginPath();
+      ctx.moveTo(i, 0);
+      ctx.lineTo(i, 1000);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, i);
+      ctx.lineTo(1000, i);
+      ctx.stroke();
+    }
+  </script>
+</body>
+</html>
