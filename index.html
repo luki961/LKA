@@ -26,6 +26,39 @@
   <h1>Pixel Market</h1>
   <p>Jual beli pixel — Rp1.500 per pixel</p>
   <canvas id="pixelCanvas" width="1000" height="1000"></canvas>
+
+  <div style="margin-top:20px; padding:15px; border:1px solid #ccc; border-radius:10px;">
+    <h2>Beli Pixel</h2>
+      <p>Harga: Rp1.500 per pixel</p>
+        <label for="jumlahPixel">Jumlah pixel:</label>
+          <input id="jumlahPixel" type="number" min="1" max="10000" value="1" style="display:block; margin:10px 0; padding:10px; width:90%;"/>
+            <p>Total: <strong id="totalHarga">Rp1.500</strong></p>
+              <button type="button" onclick="pesanPixel()" style="padding:12px; background:#16803c; color:white; border:0; border-radius:8px;">Pesan lewat WhatsApp</button>
+              </div>
+              <script>
+              function pesanPixel() {
+                const jumlah = Number(document.getElementById('jumlahPixel').value);
+                  if (!Number.isInteger(jumlah) || jumlah < 1 || jumlah > 10000) {
+                      alert('Masukkan jumlah pixel 1 sampai 10000.');
+                          return;
+                            }
+                              const total = jumlah * 1500;
+                                const pesan = 'Halo, saya ingin membeli ' + jumlah +
+                                    ' pixel di Pixel Market. Total Rp' +
+                                        total.toLocaleString('id-ID') +
+                                            '. Mohon petunjuk pembayaran QRIS. Saya akan mengirim bukti pembayaran untuk diperiksa.';
+                                              window.open('https://wa.me/6281380214928?text=' +
+                                                  encodeURIComponent(pesan), '_blank');
+                                                  }
+                                                  document.getElementById('jumlahPixel').addEventListener('input', function() {
+                                                    const jumlah = Number(this.value);
+                                                      document.getElementById('totalHarga').textContent =
+                                                          Number.isInteger(jumlah) && jumlah >= 1 && jumlah <= 10000
+                                                                ? 'Rp' + (jumlah * 1500).toLocaleString('id-ID')
+                                                                      : 'Jumlah tidak valid';
+                                                                      });
+                                                                      </script>
+                                                                      
   <script>
     const canvas = document.getElementById("pixelCanvas");
     const ctx = canvas.getContext("2d");
